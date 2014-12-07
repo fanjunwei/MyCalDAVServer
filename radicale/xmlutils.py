@@ -26,7 +26,6 @@ iCal requests (PUT) and string objects with charset correctly defined
 in them for XML requests (all but PUT).
 
 """
-from radicale import ical, config
 
 try:
     from collections import OrderedDict
@@ -46,7 +45,15 @@ except ImportError:
 import re
 import xml.etree.ElementTree as ET
 
-from . import client
+try:
+    from http import client
+    from urllib.parse import unquote, urlparse
+except ImportError:
+    import httplib as client
+    from urllib import unquote
+    from urlparse import urlparse
+
+from . import config, ical
 
 
 NAMESPACES = {
@@ -58,9 +65,7 @@ NAMESPACES = {
     "ICAL": "http://apple.com/ns/ical/",
     "ME": "http://me.com/_namespace/"}
 
-
 NAMESPACES_REV = {}
-
 
 for short, url in NAMESPACES.items():
     NAMESPACES_REV[url] = short
@@ -70,7 +75,6 @@ for short, url in NAMESPACES.items():
     else:
         # ... and badly with Python 2.6 and 3.1
         ET._namespace_map[url] = short  # pylint: disable=W0212
-
 
 CLARK_TAG_REGEX = re.compile(r"""
     {                        # {
@@ -94,7 +98,7 @@ def _pretty_xml(element, level=0):
         # pylint: disable=W0631
         if not sub_element.tail or not sub_element.tail.strip():
             sub_element.tail = i
-        # pylint: enable=W0631
+            # pylint: enable=W0631
     else:
         if level and (not element.tail or not element.tail.strip()):
             element.tail = i
@@ -295,7 +299,7 @@ def _propfind_response(path, item, props, user):
                 comp = ET.Element(_tag("C", "comp"))
                 comp.set("name", component)
                 element.append(comp)
-            # pylint: enable=W0511
+                # pylint: enable=W0511
         elif tag == _tag("D", "current-user-principal") and user:
             tag = ET.Element(_tag("D", "href"))
             tag.text = _href("/%s/" % user)
@@ -325,7 +329,7 @@ def _propfind_response(path, item, props, user):
                     tag = ET.Element(_tag("D", "principal"))
                     element.append(tag)
                 if item.is_leaf(item.path) or (
-                        not item.exists and item.resource_type):
+                            not item.exists and item.resource_type):
                     # 2nd case happens when the collection is not stored yet,
                     # but the resource type is guessed
                     if item.resource_type == "addressbook":
