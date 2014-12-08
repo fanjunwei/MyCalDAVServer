@@ -65,9 +65,9 @@ class Collection(ical.Collection):
     @property
     def _modification_time(self):
         """Collection's last modification time."""
-        timestamp_query = DBLine.objects.filter(item__collection=self._db_collection).order_by('-timestamp')
-        if timestamp_query.count() > 0:
-            timestamp = timestamp_query[0]
+        line_query = DBLine.objects.filter(item__collection=self._db_collection).order_by('-timestamp')
+        if line_query.count() > 0:
+            timestamp = line_query[0].timestamp
         else:
             timestamp = None
         if timestamp:
@@ -114,7 +114,7 @@ class Collection(ical.Collection):
             for line in ical.unfold(item.text):
                 db_line = DBLine()
                 db_line.name, db_line.value = line.split(":", 1)
-                db_line.item = item
+                db_line.item = db_item
                 db_line.save()
 
     def delete(self):
