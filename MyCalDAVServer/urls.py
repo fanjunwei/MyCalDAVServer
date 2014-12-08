@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-from our_calendar.auth import logged_in_or_basicauth
-from our_calendar.views import OurCalendarView
 from radicale.views import RadicaleView, radicaleViewHandle
 
 admin.autodiscover()
@@ -14,5 +12,4 @@ urlpatterns = patterns('',
 
                        #url(r'^admin/', include(admin.site.urls)),
                        url(r'^(?P<path>.*)$', radicaleViewHandle),
-                    #url(r'^(?P<path>.*)$', logged_in_or_basicauth("calendar")(OurCalendarView.as_view())),
 )

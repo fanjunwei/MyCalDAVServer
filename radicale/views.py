@@ -3,10 +3,9 @@
 # Time: 21:19
 # Email:fanjunwei003@163.com
 from django.http import HttpResponse
-from django.utils.decorators import classonlymethod, method_decorator
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
-from djangodav.views import DavView
 from radicale import Application
 
 __author__ = u'范俊伟'
