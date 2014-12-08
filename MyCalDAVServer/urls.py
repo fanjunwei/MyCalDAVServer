@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-from radicale.views import RadicaleView, radicaleViewHandle
+from radicale.views import radicaleViewHandle
 
 admin.autodiscover()
 
