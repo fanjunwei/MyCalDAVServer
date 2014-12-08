@@ -8,10 +8,10 @@ INSTALLED_APPS加入
 
 url加入
 -------------
-url(r'^(?P<path>.*)$', radicaleViewHandle),  
+url(r'^(?P\<path\>.*)$', radicaleViewHandle),  
 
 如果需要CalDAV的服务路径不为根目录,例如基于/caldav/,则url配置为:  
-> url(r'^caldav(?P<path>.*)$', radicaleViewHandle),  
+> url(r'^caldav(?P\<path\>.*)$', radicaleViewHandle),  
 
 并修改radicale/config.py  
 > "base_prefix": "/caldav/"
