@@ -24,46 +24,8 @@ http://docs.python.org/library/logging.config.html
 
 """
 
-import os
-import sys
 import logging
 import logging.config
-import signal
-
-from radicale import config
 
 
-LOGGER = logging.getLogger()
-
-
-def configure_from_file(filename, debug):
-    logging.config.fileConfig(filename)
-    if debug:
-        LOGGER.setLevel(logging.DEBUG)
-        for handler in LOGGER.handlers:
-            handler.setLevel(logging.DEBUG)
-
-
-def start():
-    """Start the logging according to the configuration."""
-    filename = os.path.expanduser(config.get("logging", "config"))
-    debug = config.getboolean("logging", "debug")
-
-    if os.path.exists(filename):
-        # Configuration taken from file
-        configure_from_file(filename, debug)
-        # Reload config on SIGHUP (UNIX only)
-        if hasattr(signal, 'SIGHUP'):
-            def handler(signum, frame):
-                configure_from_file(filename, debug)
-            signal.signal(signal.SIGHUP, handler)
-    else:
-        # Default configuration, standard output
-        handler = logging.StreamHandler(sys.stdout)
-        handler.setFormatter(logging.Formatter("%(message)s"))
-        LOGGER.addHandler(handler)
-        if debug:
-            LOGGER.setLevel(logging.DEBUG)
-            LOGGER.debug(
-                "Logging configuration file '%s' not found, using stdout." %
-                filename)
+LOGGER = logging.getLogger('radicale')

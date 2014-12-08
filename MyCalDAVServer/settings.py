@@ -43,7 +43,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -104,11 +104,22 @@ LOGGING = {
             'filename': '/var/log/django/error.log',
             'formatter': 'verbose_sp',
         },
+        'debug': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': '/var/log/django/debug.log',
+            'formatter': 'verbose_sp',
+        },
     },
     'loggers': {
         'django': {
             'handlers': ['error'],
             'level': 'INFO',
+            'propagate': True
+        },
+        'radicale': {
+            'handlers': ['debug'],
+            'level': 'DEBUG',
             'propagate': True
         },
     },
