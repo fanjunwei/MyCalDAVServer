@@ -48,7 +48,7 @@ INITIAL_CONFIG = {
         "protocol": "PROTOCOL_SSLv23",
         "ciphers": "",
         "dns_lookup": "True",
-        "base_prefix": "/",
+        "base_prefix": "/caldav/",
         "can_skip_base_prefix": "False",
         "realm": "Radicale - Password Required"},
     "well-known": {
@@ -58,7 +58,7 @@ INITIAL_CONFIG = {
         "request": "utf-8",
         "stock": "utf-8"},
     "auth": {
-        "type": "None",
+        "type": "website",
         "custom_handler": "",
         "htpasswd_filename": "/etc/radicale/users",
         "htpasswd_encryption": "crypt",
@@ -80,7 +80,7 @@ INITIAL_CONFIG = {
     "git": {
         "committer": "Radicale <radicale@example.com>"},
     "rights": {
-        "type": "None",
+        "type": "website",
         "custom_handler": "",
         "file": "~/.config/radicale/rights"},
     "storage": {
