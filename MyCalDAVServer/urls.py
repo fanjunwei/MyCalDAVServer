@@ -13,6 +13,6 @@ urlpatterns = patterns('',
                        # url(r'^blog/', include('blog.urls')),
 
                        #url(r'^admin/', include(admin.site.urls)),
-                       url(r'^(?P<path>.*)$', radicaleViewHandle),
-                    #url(r'^calendar(?P<path>.*)$', logged_in_or_basicauth("calendar")(OurCalendarView.as_view())),
+                       #url(r'^(?P<path>.*)$', radicaleViewHandle),
+                    url(r'^(?P<path>.*)$', logged_in_or_basicauth("calendar")(OurCalendarView.as_view())),
 )
