@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'our_calendar',
     'djangodav',
     'django_caldav',
+    'radicale',
 )
 
 MIDDLEWARE_CLASSES = (
