@@ -25,11 +25,6 @@ import time
 from datetime import datetime
 from contextlib import contextmanager
 
-from sqlalchemy import create_engine, Column, Unicode, Integer, ForeignKey
-from sqlalchemy import func
-from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy.ext.declarative import declarative_base
-
 from .. import config
 
 from radicale.models import *

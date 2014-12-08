@@ -1,28 +1,12 @@
 django CalDAV 服务
 =============
-所需包
--------------
-pip install django-ical
-
-pip install lxml
-
-pip install djangorestframework
-
-pip install mock
-
-pip install http
-
-
 INSTALLED_APPS加入
 -------------
-'our_calendar',
-
-'django_caldav',
-
+'radicale',  
 
 url加入
 -------------
-url(r'^calendar(?P<path>.*)$', logged_in_or_basicauth("calendar")(OurCalendarView.as_view())),  
+url(r'^(?P<path>.*)$', radicaleViewHandle),  
 
 MIDDLEWARE_CLASSES 注掉如下功能
 -------------
