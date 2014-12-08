@@ -58,7 +58,7 @@ class Collection(ical.Collection):
             items = DBItem.objects.filter(collection=self._db_collection, tag=item_type.tag).order_by('name')
             for item in items:
                 text = "\n".join(
-                    "%s:%s" % (line.name, line.value) for line in item.lines)
+                    "%s:%s" % (line.name, line.value) for line in item.dbline_set.all())
                 item_objects.append(item_type(text, item.name))
         return item_objects
 
@@ -114,7 +114,7 @@ class Collection(ical.Collection):
             for line in ical.unfold(item.text):
                 db_line = DBLine()
                 db_line.name, db_line.value = line.split(":", 1)
-                db_line.item_name = item.name
+                db_line.item = item
                 db_line.save()
 
     def delete(self):

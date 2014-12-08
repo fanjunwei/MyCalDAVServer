@@ -32,7 +32,7 @@ class DBLine(models.Model):
     timestamp = models.IntegerField(default=lambda: time.time() * 10 ** 6, primary_key=True)
     name = models.TextField(max_length=255)
     value = models.TextField(max_length=255)
-    item_name = models.ForeignKey(DBItem)
+    item = models.ForeignKey(DBItem)
 
 
 class DBProperty(models.Model):
