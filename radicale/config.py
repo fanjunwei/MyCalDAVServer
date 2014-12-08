@@ -80,8 +80,8 @@ INITIAL_CONFIG = {
     "git": {
         "committer": "Radicale <radicale@example.com>"},
     "rights": {
-        "type": "website",
-        "custom_handler": "",
+        "type": "custom",
+        "custom_handler": "radicale.rights.website",
         "file": "~/.config/radicale/rights"},
     "storage": {
         "type": "database",
