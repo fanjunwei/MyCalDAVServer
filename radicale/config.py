@@ -91,10 +91,11 @@ INITIAL_CONFIG = {
         # "filesystem_folder": os.path.expanduser("~/.config/radicale/collections"),
         # "database_url": ""
     },
-    "logging": {
-        "config": "/etc/radicale/logging",
-        "debug": "False",
-        "full_environment": "False"}}
+    # "logging": {
+    # "config": "/etc/radicale/logging",
+    # "debug": "False",
+    # "full_environment": "False"}
+}
 
 # Create a ConfigParser and configure it
 _CONFIG_PARSER = ConfigParser()
