@@ -48,7 +48,7 @@ INITIAL_CONFIG = {
         "protocol": "PROTOCOL_SSLv23",
         "ciphers": "",
         "dns_lookup": "True",
-        "base_prefix": "/",
+        "base_prefix": "/caldav/",
         "can_skip_base_prefix": "False",
         "realm": "Radicale - Password Required"},
     "well-known": {
