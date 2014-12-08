@@ -10,11 +10,10 @@ __author__ = u'范俊伟'
 
 
 def is_authenticated(user, password):
-
     if user and password:
-        user = authenticate(username=user, password=password)
-        if user is not None:
-            if user.is_active:
-                return True
+        au = authenticate(username=user, password=password)
+        if au is not None:
+            if au.is_active:
+                return user
 
     return False

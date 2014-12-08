@@ -34,7 +34,7 @@ def radicaleViewHandle(request, *args, **kwargs):
     environ = dict(request.META)
     content = app(environ, start_response)
     if response:
-        response.content = content
+        response.content = '\n'.join(content)
     return response
 
 
