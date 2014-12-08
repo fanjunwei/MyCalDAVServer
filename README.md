@@ -10,6 +10,12 @@ url加入
 -------------
 url(r'^(?P<path>.*)$', radicaleViewHandle),  
 
+如果需要CalDAV的服务路径不为根目录,例如基于/caldav/,则url配置为:  
+> url(r'^caldav(?P<path>.*)$', radicaleViewHandle),  
+
+并修改radicale/config.py  
+> "base_prefix": "/caldav/"
+
 MIDDLEWARE_CLASSES 注掉如下功能
 -------------
 \#'django.middleware.csrf.CsrfViewMiddleware',
