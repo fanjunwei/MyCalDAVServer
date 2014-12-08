@@ -118,7 +118,7 @@ LOGGING = {
             'propagate': True
         },
         'radicale': {
-            'handlers': ['debug'],
+            'handlers': ['error'],
             'level': 'DEBUG',
             'propagate': True
         },
