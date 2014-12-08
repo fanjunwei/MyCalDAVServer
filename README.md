@@ -1,5 +1,7 @@
 django CalDAV 服务
 =============
+> 此分支为将radicale改造为基于django
+
 INSTALLED_APPS加入
 -------------
 'radicale',  
