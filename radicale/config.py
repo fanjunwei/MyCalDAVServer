@@ -89,7 +89,7 @@ INITIAL_CONFIG = {
         "type": "database",
         "custom_handler": "",
         # "filesystem_folder": os.path.expanduser("~/.config/radicale/collections"),
-        "database_url": ""
+        # "database_url": ""
     },
     "logging": {
         "config": "/etc/radicale/logging",
